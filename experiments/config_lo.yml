@@ -26,11 +26,14 @@ metrics:
   metric_q3: 1
 
 optimizer:
-  type: SGD
+  #type: SGD
+  type: Adamax
   args:
-    lr: 0.01
-    momentum: 0.9
-    #weight_decay: 0
+    lr: 0.003
+    betas: [0.9, 0.999]
+    eps: 0.000000008
+    weight_decay: 0
+    #momentum: 0.9
 
 training:
   early_stop: 3

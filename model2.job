@@ -1,0 +1,26 @@
+#!/bin/sh
+#$ -S /bin/sh
+#$ -N model2
+#$ -q all.q
+#$ -M linda.ottensmann@helsinki.fi
+#$ -o /homes/lottensm/chall/protein-language-challenge/model2.OU
+#$ -e /homes/lottensm/chall/protein-language-challenge/model2.ER
+#copy local envirnmental variables
+#$ -V
+#cd to execution directory
+#$ -cwd
+cd /homes/lottensm/chall/protein-language-challenge
+#Header info
+echo "Biomedicum Bioinformatics Unit Linux Cluster"
+echo "http://www.bioinfo.helsinki.fi"
+echo "http://www.giu.fi"
+echo "Job name: model2"
+echo "User name: " $USER
+echo "Run on cluster node: " $HOST
+echo "Run directory: " `pwd`
+echo "Start time: " `date`
+echo "---------------------------------------"
+#Increase stack size
+export MPSTKZ=8M
+#Run command
+/homes/lottensm/anaconda3/bin/challenge train -c experiments/config_lo.yml
